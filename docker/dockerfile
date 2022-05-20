@@ -1,5 +1,5 @@
 FROM openjdk:11
 RUN mkdir /out
-COPY * /out
+COPY ** /out/
 WORKDIR /out
-CMD dir
+CMD ls -la

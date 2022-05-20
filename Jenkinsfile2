@@ -8,7 +8,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('docker') {
+                dir ('docker2') {
                 	sh 'docker build -t sealiv_toolbox:latest . '
                 }
             }

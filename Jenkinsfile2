@@ -1,0 +1,25 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent any
+    stages {
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('docker') {
+                	sh 'docker build -t sealiv_toolbox:latest . '
+                }
+            }
+        }
+        stage("docker push") {
+            steps {
+                echo " ============== start pushing image =================="
+                sh '''
+                docker push sealiv_toolbox:latest
+                '''
+            }
+        }
+    }
+}
